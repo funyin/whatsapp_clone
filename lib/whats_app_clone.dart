@@ -22,7 +22,7 @@ import 'package:whatsapp_clone/widgets/chat_master.dart';
 class WhatsAppClone extends StatelessWidget {
   late BuildContext mContext;
 
-  WhatsAppClone({Key? key}) : super(key: key) {}
+  WhatsAppClone({Key? key}) : super(key: key);
 
   var resizeAnimDuration = Duration(milliseconds: 300);
 

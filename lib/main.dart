@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: "WhatsApp Web Clone - funyinKash",
       theme: ThemeData.light().copyWith(
           textSelectionTheme: TextSelectionThemeData(
               cursorColor: Colors.black26,
