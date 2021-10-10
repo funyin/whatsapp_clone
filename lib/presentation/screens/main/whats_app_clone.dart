@@ -17,13 +17,26 @@ import 'package:whatsapp_clone/server/mock_server.dart';
 import 'package:whatsapp_clone/state.dart';
 import 'package:whatsapp_clone/utils/project_vectors.dart';
 
-///main entry point
-class WhatsAppClone extends StatelessWidget {
-  late BuildContext mContext;
-
+class WhatsAppClone extends StatefulWidget {
   WhatsAppClone({Key? key}) : super(key: key);
 
+  @override
+  State<WhatsAppClone> createState() => _WhatsAppCloneState();
+}
+
+class _WhatsAppCloneState extends State<WhatsAppClone>
+    with TickerProviderStateMixin {
+  late BuildContext mContext;
+
   var resizeAnimDuration = Duration(milliseconds: 300);
+  late var scaleAnim =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 800));
+
+  @override
+  void initState() {
+    super.initState();
+    scaleAnim.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -161,10 +174,13 @@ class WhatsAppClone extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            Assets.imagesInitialState,
-            width: 355,
-            height: 355,
+          ScaleTransition(
+            scale: scaleAnim,
+            child: Image.asset(
+              Assets.imagesInitialState,
+              width: 355,
+              height: 355,
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(top: 28, bottom: 16),
