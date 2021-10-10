@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:whatsapp_clone/models/item_chat_model.dart';
+import 'package:whatsapp_clone/resources/R.dart';
 
 class ProjectUtils {
   //Project Utils
-  static Color green = Color(0xff07bc4c);
-  static Color teal = Color(0xff009788);
-  static Color iconColor = Color(0xff919191);
-  static Color contentBackColor = Color(0xffededed);
-  static const senderColor = Color(0xffdcf8c7);
-  static double headerHeight = 58;
 
   static String messageSenderStatusToString(MessageSenderStatus status) {
     switch (status) {
@@ -56,7 +51,7 @@ class ProjectUtils {
           svg,
           height: size,
           width: size,
-          color: color ?? iconColor,
+          color: color ?? R.colors.iconColor,
         ),
       ),
     );

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,15 +8,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_clone/bloc/bloc.dart';
+import 'package:whatsapp_clone/generated/assets.dart';
+import 'package:whatsapp_clone/presentation/widgets/chat_detail.dart';
+import 'package:whatsapp_clone/presentation/widgets/chat_main.dart';
+import 'package:whatsapp_clone/presentation/widgets/chat_master.dart';
 import 'package:whatsapp_clone/resources/R.dart';
 import 'package:whatsapp_clone/server/mock_server.dart';
 import 'package:whatsapp_clone/state.dart';
-import 'package:whatsapp_clone/utils/project_utils.dart';
 import 'package:whatsapp_clone/utils/project_vectors.dart';
-import 'package:whatsapp_clone/widgets/chat_detail.dart';
-import 'package:whatsapp_clone/widgets/chat_main.dart';
-import 'package:whatsapp_clone/widgets/chat_master.dart';
 
+///main entry point
 class WhatsAppClone extends StatelessWidget {
   late BuildContext mContext;
 
@@ -29,6 +28,8 @@ class WhatsAppClone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     mContext = context;
+
+    ///dictates if the main chat area has  padding around
     var frame = MediaQuery.of(context).size.width > 1300;
     return Scaffold(
       body: BlocProvider<WhatsAppCloneCubit>(
@@ -43,29 +44,21 @@ class WhatsAppClone extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  color: ProjectUtils.teal,
+                  color: R.colors.teal,
                   height: R.dimens.screenHeight(context) / 6.32,
                 ),
               ),
+
+              ///Smaller displays are unsupported for whatsapp web
               if (MediaQuery.of(context).size.width < 680)
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Text(
-                      "This project is currently only available for large screen devices, check it on a laptop",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
-                    ),
-                  ),
-                )
+                smallFormFactorMessage()
               else
                 FractionallySizedBox(
                   widthFactor: frame ? 0.91 : 1,
                   heightFactor: frame ? 0.95 : 1,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: ProjectUtils.contentBackColor,
+                        color: R.colors.background,
                         boxShadow: [
                           BoxShadow(
                               color: Colors.black26,
@@ -112,6 +105,19 @@ class WhatsAppClone extends StatelessWidget {
     );
   }
 
+  Center smallFormFactorMessage() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Text(
+          "This project is currently only available for large screen devices, check it on a larger screen with at least 680px width",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.w300, fontSize: 14),
+        ),
+      ),
+    );
+  }
+
   LayoutBuilder currentChatState(WhatsAppCloneState state) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -150,14 +156,13 @@ class WhatsAppClone extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 16),
       decoration: BoxDecoration(
           color: Color(0xfff8f9fb),
-          border:
-              Border(bottom: BorderSide(width: 6, color: ProjectUtils.green))),
+          border: Border(bottom: BorderSide(width: 6, color: R.colors.green))),
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(
-            "https://firebasestorage.googleapis.com/v0/b/funyinkash-portfolio.appspot.com/o/portfolio%2FwhatsAppClone%2Fimages%2FwhatApEmptyState.jpg?alt=media&token=b0ac66d7-31ac-4e04-ac9c-657d5301218b",
+          Image.asset(
+            Assets.imagesInitialState,
             width: 355,
             height: 355,
           ),
@@ -202,7 +207,7 @@ class WhatsAppClone extends StatelessWidget {
                         text: "FunyinKash",
                         recognizer: tapGestureRecognizer,
                         style: TextStyle(
-                          color: ProjectUtils.green,
+                          color: R.colors.green,
                         ))
                   ])),
             ],

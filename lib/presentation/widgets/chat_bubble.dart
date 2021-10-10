@@ -8,8 +8,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:whatsapp_clone/models/item_chat_model.dart';
+import 'package:whatsapp_clone/resources/R.dart';
 import 'package:whatsapp_clone/server/mock_server.dart';
-import 'package:whatsapp_clone/utils/project_utils.dart';
 import 'package:whatsapp_clone/utils/project_vectors.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -41,11 +41,11 @@ class ChatBubble extends StatelessWidget {
           textDirection: iSent ? TextDirection.rtl : TextDirection.ltr,
           children: [
             Transform(
-              transform: Matrix4.rotationY(iSent ? pi : 0)
-                ..translate(iSent ? -8 : 0),
+              transform: Matrix4.rotationY(iSent ? pi : 0),
+              // ..translate(iSent ? -8 : 0),
               child: SvgPicture.string(
                 ProjectVectors.chatBubbleChip,
-                color: iSent ? ProjectUtils.senderColor : Colors.white,
+                color: iSent ? R.colors.senderColor : Colors.white,
                 matchTextDirection: true,
                 width: 8,
                 height: 13,
@@ -60,7 +60,7 @@ class ChatBubble extends StatelessWidget {
                     bottom: bottomMargin,
                   ),
                   decoration: BoxDecoration(
-                      color: iSent ? ProjectUtils.senderColor : Colors.white,
+                      color: iSent ? R.colors.senderColor : Colors.white,
                       borderRadius: BorderRadius.circular(8).copyWith(
                           topLeft: Radius.circular(iSent ? 8 : 0),
                           topRight: Radius.circular(iSent ? 0 : 8))),
@@ -136,14 +136,13 @@ class ChatBubble extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
-                (iSent ? ProjectUtils.senderColor : Colors.white)
-                    .withOpacity(0.4),
-                (iSent ? ProjectUtils.senderColor : Colors.white),
-                (iSent ? ProjectUtils.senderColor : Colors.white),
+                (iSent ? R.colors.senderColor : Colors.white).withOpacity(0.4),
+                (iSent ? R.colors.senderColor : Colors.white),
+                (iSent ? R.colors.senderColor : Colors.white),
               ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
               child: Icon(
                 Icons.keyboard_arrow_down_rounded,
-                color: ProjectUtils.iconColor,
+                color: R.colors.iconColor,
               ),
             ),
           ),

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/presentation/widgets/searchHeaderDelegate.dart';
+import 'package:whatsapp_clone/resources/R.dart';
 import 'package:whatsapp_clone/utils/project_emojis.dart';
-import 'package:whatsapp_clone/utils/project_utils.dart';
-import 'package:whatsapp_clone/widgets/searchHeaderDelegate.dart';
 
 class ChatBottomsheet extends StatefulWidget {
   final Function(String) onEmojiSelected;
@@ -49,7 +49,7 @@ class _ChatBottomsheetState extends State<ChatBottomsheet>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ProjectUtils.contentBackColor,
+      color: R.colors.background,
       child: ValueListenableBuilder<bool>(
         valueListenable: showEmoji,
         builder: (context, value, child) => value
@@ -63,9 +63,9 @@ class _ChatBottomsheetState extends State<ChatBottomsheet>
                             height: 40,
                             alignment: Alignment.center,
                             child: Icon(bottomSheetTabs[index],
-                                color: ProjectUtils.iconColor))),
+                                color: R.colors.iconColor))),
                     controller: tabController,
-                    indicatorColor: ProjectUtils.teal,
+                    indicatorColor: R.colors.teal,
                   ),
                   Expanded(
                       child: NotificationListener(

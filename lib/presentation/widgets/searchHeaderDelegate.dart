@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:whatsapp_clone/utils/project_utils.dart';
+import 'package:whatsapp_clone/resources/R.dart';
 
 class SearchHeaderDelegate extends SliverPersistentHeaderDelegate {
   final Function(String)? onChanged;
@@ -12,7 +12,7 @@ class SearchHeaderDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      color: ProjectUtils.contentBackColor,
+      color: R.colors.background,
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),

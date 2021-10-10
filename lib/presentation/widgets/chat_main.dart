@@ -7,12 +7,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_clone/bloc/bloc.dart';
 import 'package:whatsapp_clone/models/item_chat_model.dart';
+import 'package:whatsapp_clone/presentation/widgets/chat_bottomsheet.dart';
+import 'package:whatsapp_clone/presentation/widgets/chat_bubble.dart';
+import 'package:whatsapp_clone/resources/R.dart';
 import 'package:whatsapp_clone/server/mock_server.dart';
 import 'package:whatsapp_clone/state.dart';
 import 'package:whatsapp_clone/utils/project_utils.dart';
 import 'package:whatsapp_clone/utils/project_vectors.dart';
-import 'package:whatsapp_clone/widgets/chat_bottomsheet.dart';
-import 'package:whatsapp_clone/widgets/chat_bubble.dart';
 
 class ChatMain extends StatelessWidget {
   final ItemChatModel selectedChat;
@@ -152,9 +153,9 @@ class ChatMain extends StatelessWidget {
 
   Material chatHeader(BuildContext context) {
     return Material(
-      color: ProjectUtils.contentBackColor,
+      color: R.colors.background,
       child: Container(
-        height: ProjectUtils.headerHeight,
+        height: R.colors.headerHeight,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           child: InkWell(
@@ -217,7 +218,7 @@ class ChatMain extends StatelessWidget {
                                         fontSize: 13,
                                         fontWeight: FontWeight.w200,
                                         color: respondentTyping
-                                            ? ProjectUtils.teal
+                                            ? R.colors.teal
                                             : Colors.black54),
                                   );
                                 },
@@ -235,7 +236,7 @@ class ChatMain extends StatelessWidget {
                   },
                   splashRadius: 24,
                   icon: Icon(Icons.search),
-                  color: ProjectUtils.iconColor,
+                  color: R.colors.iconColor,
                 ),
                 ProjectUtils.buildAction(ProjectVectors.overflowMenu),
               ],
@@ -249,7 +250,7 @@ class ChatMain extends StatelessWidget {
   Container messageBuilder(BuildContext context) {
     var edgeInsets = EdgeInsets.symmetric(horizontal: 10, vertical: 5);
     return Container(
-      color: ProjectUtils.contentBackColor,
+      color: R.colors.background,
       child: Padding(
         padding: edgeInsets,
         child: ValueListenableBuilder<int>(
@@ -277,21 +278,21 @@ class ChatMain extends StatelessWidget {
                             bottomSheetState.value = 0;
                           },
                               key: ValueKey(1),
-                              color: value == 0 ? ProjectUtils.teal : null),
+                              color: value == 0 ? R.colors.teal : null),
                           if (showing)
                             ProjectUtils.buildAction(ProjectVectors.gif,
                                 size: 18, onTap: () {
                               bottomSheetState.value = 1;
                             },
                                 key: ValueKey(2),
-                                color: value == 1 ? ProjectUtils.teal : null),
+                                color: value == 1 ? R.colors.teal : null),
                           if (showing)
                             ProjectUtils.buildAction(ProjectVectors.paste,
                                 size: 20, onTap: () {
                               bottomSheetState.value = 2;
                             },
                                 key: ValueKey(3),
-                                color: value == 2 ? ProjectUtils.teal : null),
+                                color: value == 2 ? R.colors.teal : null),
                           ProjectUtils.buildAction(ProjectVectors.paperClip,
                               size: 18, key: ValueKey(4))
                         ]),

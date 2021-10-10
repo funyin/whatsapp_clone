@@ -7,10 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:whatsapp_clone/bloc/bloc.dart';
 import 'package:whatsapp_clone/models/item_chat_model.dart';
+import 'package:whatsapp_clone/presentation/widgets/item_list_group.dart';
+import 'package:whatsapp_clone/presentation/widgets/search_text_field.dart';
+import 'package:whatsapp_clone/resources/R.dart';
 import 'package:whatsapp_clone/state.dart';
 import 'package:whatsapp_clone/utils/project_utils.dart';
-import 'package:whatsapp_clone/widgets/item_list_group.dart';
-import 'package:whatsapp_clone/widgets/search_text_field.dart';
 
 class ChatDetail extends StatelessWidget {
   ChatDetail({
@@ -327,7 +328,7 @@ class ChatDetail extends StatelessWidget {
     return Text(
       title,
       maxLines: 1,
-      style: TextStyle(color: ProjectUtils.teal, fontSize: 14),
+      style: TextStyle(color: R.colors.teal, fontSize: 14),
     );
   }
 
@@ -338,13 +339,13 @@ class ChatDetail extends StatelessWidget {
   Container detailHeader(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 30),
-        height: ProjectUtils.headerHeight,
+        height: R.colors.headerHeight,
         child: Row(
           children: [
             IconButton(
               icon: Icon(
                 Icons.close,
-                color: ProjectUtils.iconColor,
+                color: R.colors.iconColor,
               ),
               onPressed: () {
                 BlocProvider.of<WhatsAppCloneCubit>(context)
